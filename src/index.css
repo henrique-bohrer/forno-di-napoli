@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #C0392B;
+  --color-secondary: #1A1A1A;
+  --color-accent: #D4A853;
+  --color-bg: #FAF6F1;
+  --color-surface: #FFFFFF;
+  --color-text: #2C2C2C;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
+  --font-accent: 'Oswald', sans-serif;
+}
+
+:root {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-surface { color: var(--color-surface); }
+
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-surface { background-color: var(--color-surface); }
+.bg-theme { background-color: var(--color-bg); }
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base button styles */
+.btn {
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-accent transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-[#A93226] hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5;
+}
+
+.btn-accent {
+  @apply bg-accent text-secondary hover:bg-[#E5B964] hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5;
+}
+
+.btn-outline {
+  @apply border-2 border-surface text-surface hover:bg-surface hover:text-primary hover:-translate-y-0.5;
+}
